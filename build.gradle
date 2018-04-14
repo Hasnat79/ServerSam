@@ -4,7 +4,12 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'main.java.Main'
+mainClassName = 'Main'
+
+sourceSets {
+    main.java.srcDir("src/main/java")
+}
+
 sourceCompatibility = 1.8
 
 repositories {

@@ -23,7 +23,7 @@ public class Scrapper {
         //System.out.println( names.first().text() );
 
         for (Element name : names) {
-            System.out.println( (name.text()) );
+            System.out.println((name.text()));
 
             //ParseData movie = new ParseData(name.text());
             //System.out.println("Name : " + movie.getName());
