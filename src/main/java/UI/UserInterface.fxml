@@ -7,12 +7,11 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/1.8"
-            fx:controller="Controller">
-    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1"
+            fx:controller="UI.Controller">
+    <BorderPane prefHeight="400.0" prefWidth="600.0">
         <bottom>
-            <HBox BorderPane.alignment="CENTER">
+            <HBox BorderPane.alignment="BOTTOM_LEFT">
                 <Label prefHeight="21.0" prefWidth="101.0" text="DB Connection">
                     <font>
                         <Font size="15.0"/>
@@ -21,9 +20,9 @@
                         <Insets left="4.0"/>
                     </HBox.margin>
                 </Label>
-                <Circle fx:id="dbStatus" fill="DODGERBLUE" radius="7.0" stroke="BLACK" strokeType="INSIDE">
+                <Circle fx:id="dbStatus" fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE">
                     <HBox.margin>
-                        <Insets left="2.0" top="4.0"/>
+                        <Insets bottom="5.0" left="2.0" top="5.0"/>
                     </HBox.margin>
                 </Circle>
             </HBox>
