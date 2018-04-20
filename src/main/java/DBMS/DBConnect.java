@@ -45,20 +45,4 @@ public class DBConnect {
             System.out.println(e.getMessage());
         }
     }
-/*
-    CREATE TABLE Movie_List
-            (
-                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Movie_Name TEXT,
-                    Year int,
-                    Quality TEXT
-            );
-*/
-    /*
-    public boolean insertData(){
-
-    }
-    */
-
-
 }

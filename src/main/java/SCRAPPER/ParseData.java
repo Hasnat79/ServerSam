@@ -13,12 +13,25 @@ public class ParseData {
     private String quality;
     private boolean validData = false;
 
+    /**
+     * @param _fullTitle Takes the full file name and split it into parts for storing in Database.
+     */
     ParseData(String _fullTitle) {
         if (_fullTitle.contains("(") && _fullTitle.contains(")")) {
             String[] splitted = _fullTitle.split("[\\(\\)]");
             name = splitted[0].trim();
-            year = Integer.parseInt(splitted[1].trim());
-            quality = splitted[2].trim().split(" ")[0].replaceAll("[\\[\\]]", "");
+
+            try {
+                year = Integer.parseInt(splitted[1].trim());
+            } catch (NumberFormatException e) {
+                year = Integer.parseInt(splitted[3]);
+            }
+            try {
+                quality = splitted[2].trim().split(" ")[0].replaceAll("[\\[\\]]", "");
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                quality = "";
+            }
             validData = true;
         }
     }
