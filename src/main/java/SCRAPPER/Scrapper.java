@@ -8,8 +8,6 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 public class Scrapper {
     public static void main(String[] args) {
@@ -30,11 +28,8 @@ public class Scrapper {
         }
 
 
-        try {
-            baseURL = "http://172.16.50.4/FTP-2/" + URLEncoder.encode("English Movies", "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        baseURL = "http://172.16.50.4/FTP-2/English%20Movies/";
+
 
         // For 720p
         //Special Case
