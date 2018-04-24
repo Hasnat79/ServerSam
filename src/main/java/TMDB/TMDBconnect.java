@@ -22,10 +22,11 @@ public class TMDBconnect {
     }
 
 
-    public void findMovie(String name, int year) {
+    public Movie findMovie(String name, int year) {
 
         Gson gson = new Gson();
         String finalUrl = baseUrl + "&query=" + name + "&year=" + year;
+        Movie movie = null;
 
         Logger.info(finalUrl);
 
@@ -36,11 +37,9 @@ public class TMDBconnect {
             BufferedReader jsonFile = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
             Response response = gson.fromJson(jsonFile.readLine(), Response.class);
-            Movie movie = response.getResults().get(0);
+            movie = response.getResults().get(0);
 
-
-            System.out.println(movie.getTitle());
-
+            Logger.info("Name : " + movie.getTitle());
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -48,6 +47,6 @@ public class TMDBconnect {
             e.printStackTrace();
         }
 
+        return movie;
     }
-
 }
