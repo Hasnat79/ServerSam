@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.pmw.tinylog.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +58,8 @@ public class Scrapper {
 
         for (Element name : names) {
             //SCRAPPER.ParseData movie = new SCRAPPER.ParseData(name.text());
-            System.out.println(name.text());
+
+            Logger.info(name.text());
 
             SCRAPPER.ParseData movie = new SCRAPPER.ParseData(name.text());
             movie.pushData();

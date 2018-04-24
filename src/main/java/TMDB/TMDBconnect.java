@@ -1,6 +1,7 @@
 package TMDB;
 
 import com.google.gson.Gson;
+import org.pmw.tinylog.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,27 +12,35 @@ import java.net.URL;
 
 public class TMDBconnect {
 
-    public static void main(String[] args) {
+    final String api_key;
+    String baseUrl = "https://api.themoviedb.org/3/search/movie?api_key=";
+
+    public TMDBconnect(String api_key) {
+
+        this.api_key = api_key;
+        baseUrl = baseUrl + this.api_key;
+    }
+
+
+    public void findMovie(String name, int year) {
 
         Gson gson = new Gson();
+        String finalUrl = baseUrl + "&query=" + name + "&year=" + year;
+
+        Logger.info(finalUrl);
 
         try {
-            //URL url = new URL("https://api.themoviedb.org/3/movie/550?api_key=909af28891cff6bfe9ea2fea81fc5426");
-            URL url = new URL("https://api.themoviedb.org/3/search/movie?api_key=909af28891cff6bfe9ea2fea81fc5426&query=Oldboy&year=2003");
-            //URL url = new URL("https://api.themoviedb.org/3/search/movie?api_key=909af28891cff6bfe9ea2fea81fc5426&query=up&year=2009");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
+            URL url = new URL(finalUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader jsonFile = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            String json = jsonFile.readLine().trim();
-
-            System.out.println(json);
-
-            Response response = gson.fromJson(json, Response.class);
+            Response response = gson.fromJson(jsonFile.readLine(), Response.class);
+            Movie movie = response.getResults().get(0);
 
 
-            System.out.println(response.getResults().get(0).getTitle());
-            System.out.println();
+            System.out.println(movie.getTitle());
+
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -39,8 +48,6 @@ public class TMDBconnect {
             e.printStackTrace();
         }
 
-
     }
-
 
 }
