@@ -1,4 +1,4 @@
-package UI;
+package main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
