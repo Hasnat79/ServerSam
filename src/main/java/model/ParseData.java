@@ -1,6 +1,6 @@
-package SCRAPPER;
+package model;
 
-import DBMS.DBConnect;
+import util.DBConnect;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,14 +9,14 @@ import java.sql.Statement;
 public class ParseData {
 
     private String name;
+
     private int year;
+
     private String quality;
+
     private boolean validData = false;
 
-    /**
-     * @param _fullTitle Takes the full file name and split it into parts for storing in Database.
-     */
-    ParseData(String _fullTitle) {
+    public ParseData(String _fullTitle) {
         if (_fullTitle.contains("(") && _fullTitle.contains(")")) {
             String[] splitted = _fullTitle.split("[\\(\\)]");
             name = splitted[0].trim();
