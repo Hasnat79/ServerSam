@@ -1,5 +1,5 @@
-import TMDB.Movie;
-import TMDB.TMDBconnect;
+import model.Movie;
+import util.TMDBconnect;
 
 public class testMain {
 

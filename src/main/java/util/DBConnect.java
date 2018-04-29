@@ -1,4 +1,4 @@
-package DBMS;
+package util;
 
 import java.sql.*;
 
@@ -8,15 +8,16 @@ public class DBConnect {
 
         try {
             Class.forName("org.sqlite.JDBC");
+
             return DriverManager.getConnection("jdbc:sqlite:src/main/resources/DataBase.db");
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
+
         return null;
     }
 
     public static void createNewDatabase() {
-
         try {
             getConnection();
         } catch (SQLException e) {
@@ -34,15 +35,14 @@ public class DBConnect {
                 "            );                                             ";
 
         try (Connection conn = DriverManager.getConnection(url)) {
-                DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
+            DatabaseMetaData meta = conn.getMetaData();
+            System.out.println("The driver name is " + meta.getDriverName());
+            System.out.println("A new database has been created.");
 
             Statement state = conn.createStatement();
             state.execute(createTable);
-
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
